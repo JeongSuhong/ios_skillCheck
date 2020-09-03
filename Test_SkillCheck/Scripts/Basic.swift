@@ -53,4 +53,31 @@ class Basic
         
         return result
     }
+    
+    func solution_2(_ A:[Int], _ B:[Int]) -> Int
+    {
+        var ans = 0
+        
+        var sortA = A.sorted()
+        var sortB = B.sorted()
+        
+        let count = A.count
+        
+        for _ in 0 ..< count {
+            let a = sortA.last! * sortB.first!
+            let b = sortA.first! * sortB.last!
+            
+            if a > b {
+                ans += b
+                sortA.removeFirst()
+                sortB.removeLast()
+            } else {
+                ans += a
+                sortA.removeLast()
+                sortB.removeFirst()
+            }
+        }
+        
+        return ans
+    }
 }
